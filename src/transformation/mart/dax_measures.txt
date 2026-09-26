@@ -1,0 +1,32 @@
+Total Impressions = SUM('mart_campaign_daily_performance'[impressions])
+
+Total Clicks = SUM('mart_campaign_daily_performance'[clicks])
+
+Total Conversions = SUM('mart_campaign_daily_performance'[conversions])
+
+Total Revenue = SUM('mart_campaign_daily_performance'[revenue])
+
+Total Payout = SUM('mart_campaign_daily_performance'[payout])
+
+Total Profit = [Total Revenue] - [Total Payout]
+
+CTR Percentage = 
+DIVIDE([Total Clicks], [Total Impressions], 0)
+
+Conversion Rate Percentage = 
+DIVIDE([Total Conversions], [Total Clicks], 0)
+
+Revenue Per Click = 
+DIVIDE([Total Revenue], [Total Clicks], 0)
+
+Revenue Per Conversion = 
+DIVIDE([Total Revenue], [Total Conversions], 0)
+
+MoM Revenue Growth = 
+VAR CurrentMonthRevenue = [Total Revenue]
+VAR PreviousMonthRevenue = CALCULATE([Total Revenue], PREVIOUSMONTH('DimDate'[Date]))
+RETURN
+DIVIDE(CurrentMonthRevenue - PreviousMonthRevenue, PreviousMonthRevenue, 0)
+
+Rank by Revenue = 
+RANKX(ALL('dim_campaign'[campaign_name]), [Total Revenue], , DESC, Dense)

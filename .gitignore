@@ -1,0 +1,46 @@
+# ---- Secrets / local environment -------------------------------------------
+.env
+.env.local
+*.pem
+
+# ---- Raw source data (154 MB, not in version control) -----------------------
+# The capstone dataset is supplied by the course. Download it and drop the
+# files into these folders before running the pipeline. See README.md.
+data/*.csv
+stream/*.log
+
+# Keep the folder structure and the documentation in those directories.
+!data/.gitkeep
+!stream/README_topic.md
+
+# ---- Python -----------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ---- Airflow ----------------------------------------------------------------
+airflow.db
+airflow.cfg
+airflow-webserver.pid
+logs/
+standalone_admin_password.txt
+
+# ---- Databases / local exports ---------------------------------------------
+*.sqlite
+*.sqlite3
+*.dump
+*.backup
+export/
+
+# ---- IDE / OS ---------------------------------------------------------------
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+desktop.ini
